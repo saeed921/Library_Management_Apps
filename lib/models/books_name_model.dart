@@ -4,14 +4,14 @@ class BooksNameModel{
   String name;
   String authorName;
   String category;
+  String? image;
 
-  BooksNameModel(this.id,
-      {
+  BooksNameModel(
+      {this.id,
         required this.name,
         required this.authorName,
-       required this.category
-      });
-
+       required this.category,
+        this.image});
 }
 final AuthorList=<String>[
   'Tamim Shahriar',

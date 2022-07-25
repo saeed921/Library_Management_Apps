@@ -30,321 +30,366 @@ class _UserDashBoardState extends State<UserDashBoard> {
           IconButton(onPressed: () {}, icon: Icon(Icons.search)),
         ],
       ),
-      body:
-      Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                  child: Container(
-                    height: 80.h,
-                    width: 80.w,
-                    color: Colors.red,
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [Icon(Icons.groups), Text('Members')],
+      body:Container(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                height: 100,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InkWell(
+                      child: Container(
+                        height: 100.h,
+                        width: 100.w,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: Colors.lightBlueAccent,
+                        ),
+
+                        child: Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [Icon(Icons.groups,size: 55,),
+                              Text('Total Students',
+                                style: TextStyle(fontSize: 20),)],
+                          ),
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.pushReplacementNamed(
+                            context, LoginScreen.routeName);
+                      },
                     ),
-                  ),
-                  onTap: () {
-                    Navigator.pushReplacementNamed(
-                        context, LoginScreen.routeName);
-                  },
-                ),
-                SizedBox(
-                  width: 10.w,
-                ),
-                InkWell(
-                  child: Container(
-                    height: 80.h,
-                    width: 80.w,
-                    color: Colors.red,
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [Icon(Icons.groups), Text('Members')],
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    InkWell(
+                      child: Container(
+                        height: 100.h,
+                        width: 100.w,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: Colors.lightBlueAccent,
+                        ),
+
+                        child: Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [Icon(Icons.menu_book_sharp,size: 55,),
+                              Text('Total Books',
+                              style: TextStyle(fontSize: 20),)],
+                          ),
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.pushReplacementNamed(
+                            context, LoginScreen.routeName);
+                      },
                     ),
-                  ),
-                  onTap: () {
-                    Navigator.pushReplacementNamed(
-                        context, LoginScreen.routeName);
-                  },
-                ),
-                SizedBox(
-                  width: 10.w,
-                ),
-                InkWell(
-                  child: Container(
-                    height: 80.h,
-                    width: 80.w,
-                    color: Colors.red,
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [Icon(Icons.groups), Text('Members')],
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    InkWell(
+                      child: Container(
+                        height: 100.h,
+                        width: 100.w,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: Colors.lightBlueAccent,
+                        ),
+
+                        child: Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [Icon(Icons.menu_book_sharp,size: 55,), Text('Members')],
+                          ),
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.pushReplacementNamed(
+                            context, LoginScreen.routeName);
+                      },
                     ),
-                  ),
-                  onTap: () {
-                    Navigator.pushReplacementNamed(
-                        context, LoginScreen.routeName);
-                  },
-                ),
-                SizedBox(
-                  width: 10.w,
-                ),
-                InkWell(
-                  child: Container(
-                    height: 80.h,
-                    width: 80.w,
-                    color: Colors.red,
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [Icon(Icons.groups), Text('Members')],
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    InkWell(
+                      child: Container(
+                        height: 80.h,
+                        width: 80.w,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: Colors.lightBlueAccent,
+                        ),
+
+                        child: Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [Icon(Icons.groups,size: 55,),
+                              Text('Members')],
+                          ),
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.pushReplacementNamed(
+                            context, HomePage.routeName);
+                      },
                     ),
-                  ),
-                  onTap: () {
-                    Navigator.pushReplacementNamed(
-                        context, HomePage.routeName);
-                  },
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
-          SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  Container(
-                    height: 150.h,
-                    width: 80.w,
-                    color: Colors.red,
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.network(
-                            'https://cdn.pixabay.com/photo/2017/09/21/08/14/fantasy-2771073__340.jpg',
-                            fit: BoxFit.cover,
+            SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(25.0),
+                      child: Container(
+                        height: 150.h,
+                        width: 80.w,
+                        // decoration: BoxDecoration(
+                        //   borderRadius: BorderRadius.circular(16),
+                        //   color: Colors.white,
+                        // ),
+
+                        child: Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Image.asset('images/dm.jpeg',
+                                  height: 160,
+                                  width: 150,
+                                  fit: BoxFit.cover)
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Container(
-                    height: 150.h,
-                    width: 80.w,
-                    color: Colors.red,
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.network(
-                            'https://cdn.pixabay.com/photo/2017/09/21/08/14/fantasy-2771073__340.jpg',
-                            fit: BoxFit.fill,
-                          ),
-                        ],
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Container(
+                      height: 160.h,
+                      width: 100.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: Colors.white,
+                      ),
+
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            InkWell(
+                              onTap: (){
+                                Navigator.pushNamed(context, LoginScreen.routeName);
+                              },
+                              child: Image.asset('images/englishbook.jpg',
+                                  height: 160,
+                                  width: 160,
+                                  fit: BoxFit.cover),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Container(
-                    height: 150.h,
-                    width: 80.w,
-                    color: Colors.red,
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.network(
-                            'https://cdn.pixabay.com/photo/2017/09/21/08/14/fantasy-2771073__340.jpg',
-                            fit: BoxFit.fill,
-                          ),
-                        ],
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Container(
+                      height: 150.h,
+                      width: 150.w,
+
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: Colors.white,
+                      ),
+
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Image.asset('images/dm.jpeg',
+                                height: 150,
+                                width: 160,
+                                fit: BoxFit.cover)
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Container(
-                    height: 150.h,
-                    width: 80.w,
-                    color: Colors.red,
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.network(
-                            'https://cdn.pixabay.com/photo/2017/09/21/08/14/fantasy-2771073__340.jpg',
-                            fit: BoxFit.fill,
-                          ),
-                        ],
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Container(
+                      height: 150.h,
+                      width: 100.w,
+                      color: Colors.white,
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Image.asset('images/englishbook.jpg',
+                                height: 160,
+                                width: 160,
+                                fit: BoxFit.cover)
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Container(
-                    height: 150.h,
-                    width: 80.w,
-                    color: Colors.red,
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.network(
-                            'https://cdn.pixabay.com/photo/2017/09/21/08/14/fantasy-2771073__340.jpg',
-                            fit: BoxFit.fill,
-                          ),
-                        ],
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Container(
+                      height: 150.h,
+                      width: 150.w,
+                      color: Colors.white,
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Image.asset('images/dm.jpeg',
+                                height: 160,
+                                width: 150,
+                                fit: BoxFit.cover)
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Container(
-                    height: 150.h,
-                    width: 80.w,
-                    color: Colors.red,
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.network(
-                            'https://cdn.pixabay.com/photo/2017/09/21/08/14/fantasy-2771073__340.jpg',
-                            fit: BoxFit.fill,
-                          ),
-                        ],
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Container(
+                      height: 150.h,
+                      width: 150.w,
+                      color: Colors.white10,
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Image.asset('images/englishbook.jpg',
+                                height: 160,
+                                width: 160,
+                                fit: BoxFit.cover)
+                          ],
+                        ),
                       ),
                     ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                  ],
+                )),
+            Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: ListView(
+                    children: [
+                      ListTile(
+                        title: const Text('Book Name'),
+                        leading: Image.asset('name'),
+                        subtitle: const Text('Author Name'),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      ListTile(
+                        title: const Text('Book Name'),
+                        leading: Image.asset('name'),
+                        subtitle: const Text('Author Name'),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      ListTile(
+                        title: const Text('Book Name'),
+                        leading: Image.asset('name'),
+                        subtitle: const Text('Author Name'),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      ListTile(
+                        title: const Text('Book Name'),
+                        leading: Image.asset('name'),
+                        subtitle: const Text('Author Name'),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      ListTile(
+                        title: const Text('Book Name'),
+                        leading: Image.asset('name'),
+                        subtitle: const Text('Author Name'),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      ListTile(
+                        title: const Text('Book Name'),
+                        leading: Image.asset('name'),
+                        subtitle: const Text('Author Name'),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      ListTile(
+                        title: const Text('Book Name'),
+                        leading: Image.asset('name'),
+                        subtitle: const Text('Author Name'),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      ListTile(
+                        title: const Text('Book Name'),
+                        leading: Image.asset('name'),
+                        subtitle: const Text('Author Name'),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      ListTile(
+                        title: const Text('Book Name'),
+                        leading: Image.asset('name'),
+                        subtitle: const Text('Author Name'),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      ListTile(
+                        title: const Text('Book Name'),
+                        leading: Image.asset('name'),
+                        subtitle: const Text('Author Name'),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      ListTile(
+                        title: const Text('Book Name'),
+                        leading: Image.asset('name'),
+                        subtitle: const Text('Author Name'),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      ListTile(
+                        title: const Text('Book Name'),
+                        leading: Image.asset('name'),
+                        subtitle: const Text('Author Name'),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                ],
-              )),
-          Expanded(
-              child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: ListView(
-              children: [
-                ListTile(
-                  title: const Text('Book Name'),
-                  leading: Image.asset('name'),
-                  subtitle: const Text('Author Name'),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                ListTile(
-                  title: const Text('Book Name'),
-                  leading: Image.asset('name'),
-                  subtitle: const Text('Author Name'),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                ListTile(
-                  title: const Text('Book Name'),
-                  leading: Image.asset('name'),
-                  subtitle: const Text('Author Name'),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                ListTile(
-                  title: const Text('Book Name'),
-                  leading: Image.asset('name'),
-                  subtitle: const Text('Author Name'),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                ListTile(
-                  title: const Text('Book Name'),
-                  leading: Image.asset('name'),
-                  subtitle: const Text('Author Name'),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                ListTile(
-                  title: const Text('Book Name'),
-                  leading: Image.asset('name'),
-                  subtitle: const Text('Author Name'),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                ListTile(
-                  title: const Text('Book Name'),
-                  leading: Image.asset('name'),
-                  subtitle: const Text('Author Name'),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                ListTile(
-                  title: const Text('Book Name'),
-                  leading: Image.asset('name'),
-                  subtitle: const Text('Author Name'),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                ListTile(
-                  title: const Text('Book Name'),
-                  leading: Image.asset('name'),
-                  subtitle: const Text('Author Name'),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                ListTile(
-                  title: const Text('Book Name'),
-                  leading: Image.asset('name'),
-                  subtitle: const Text('Author Name'),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                ListTile(
-                  title: const Text('Book Name'),
-                  leading: Image.asset('name'),
-                  subtitle: const Text('Author Name'),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                ListTile(
-                  title: const Text('Book Name'),
-                  leading: Image.asset('name'),
-                  subtitle: const Text('Author Name'),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-              ],
-            ),
-          ))
-        ],
-      ),
+                ))
+          ],
+        ),
+      )
     );
   }
 }
