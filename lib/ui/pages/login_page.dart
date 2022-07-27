@@ -193,11 +193,22 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         // elevated button
                         customButton(
+
                           "Sign In",
                           () {
-                            setLoginStatus(true).then((value) =>
-                                Navigator.pushReplacementNamed(
-                                    context, UserDashBoard.routeName));
+                            print(_emailController);
+                            if(_emailController.text=='admin' && _passwordController.text=='admin'){
+                              setLoginStatus(true).then((value) =>
+                                  Navigator.pushReplacementNamed(
+                                      context, UserDashBoard.routeName));
+                            }
+                            if(!_emailController.text.isEmpty && !_passwordController.text.isEmpty ){
+
+                              Navigator.pushReplacementNamed(
+                                  context, HomePage.routeName);
+
+                            }
+
                           },
                         ),
                         SizedBox(

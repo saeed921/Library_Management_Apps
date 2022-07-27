@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:library_management/auth_prefs.dart';
 import 'package:library_management/ui/app_color.dart';
+import 'package:library_management/ui/pages/book_details_page.dart';
+import 'package:library_management/ui/pages/booka_list_pages.dart';
 import 'package:library_management/ui/pages/login_page.dart';
+import 'package:library_management/ui/pages/user_dashboard.dart';
 
 class HomePage extends StatefulWidget {
   static const String routeName = '/home';
@@ -19,6 +22,17 @@ class _HomePageState extends State<HomePage> {
   final nameController = TextEditingController();
   final authorNameController = TextEditingController();
   final categoryController = TextEditingController();
+  List<String> _categories = [
+    'Popular Books',
+    'Most Recent',
+    'Novels',
+    'Poems',
+    'Programming',
+    'Developments',
+    'Sci-Fi',
+    'Magazine'
+    'Research'
+  ];
 
 
 final String txt='name';
@@ -44,7 +58,9 @@ final String txt='name';
                icon: Icon(Icons.notifications))
 
        ),
-       ElevatedButton.icon(onPressed: (){},
+       ElevatedButton.icon(onPressed: (){
+         Navigator.pushNamed(context, LoginScreen.routeName);
+       },
            icon: Icon(Icons.login),
            label: Text('Logn')),
        PopupMenuButton(
@@ -52,8 +68,8 @@ final String txt='name';
          itemBuilder: (context)=>[
            PopupMenuItem(
              onTap: (){
-               setLoginStatus(false).then((value)=>
-                   Navigator.pushReplacementNamed(context, LoginScreen.routeName));
+
+                   Navigator.pushReplacementNamed(context, LoginScreen.routeName);
              },
              child: const Text('about'),
            ),
@@ -102,6 +118,7 @@ final String txt='name';
                      height: 80.h,
                      decoration: BoxDecoration(
                        borderRadius: BorderRadius.circular(16),
+
                        color: Colors.red,
                      ),
 
@@ -141,7 +158,7 @@ final String txt='name';
                  ),
                  onTap: () {
                    Navigator.pushReplacementNamed(
-                       context, LoginScreen.routeName);
+                       context, UserDashBoard.routeName);
                  },
                ),
 
@@ -209,16 +226,81 @@ final String txt='name';
              ),
            ],
          ),
+            SizedBox(
+              height: 10,
+            ),
+         Padding(
+           padding: const EdgeInsets.all(8.0),
+           child: Container(
+             height: 40,
+             child: ListView.builder(
+                 scrollDirection: Axis.horizontal,
+                 itemCount: _categories.length,
+                 itemBuilder: (context, index) {
+                   return Padding(
+                     padding: const EdgeInsets.only(right: 10.0),
+                     child: GestureDetector(
+                       onTap: (){
+                       Navigator.pushNamed(context, BookListPages.routeName, arguments: _categories[index]);
+
+
+                       },
+                       child: Container(
+
+                         decoration: BoxDecoration(
+                             color: Colors.grey,
+                             borderRadius:
+                             BorderRadius.all(Radius.circular(20))),
+                         child: Padding(
+                           padding: const EdgeInsets.symmetric(
+                               horizontal: 12.0, vertical: 5.0),
+                           child: Center(child: Text(_categories[index],),
+                           ),
+
+                         ),
+                       ),
+                     ),
+                   );
+                 }),
+           ),
+         ),
+         Container(
+
+           child: ListTile(
+
+             title: Text('New Arrival',
+             style: TextStyle(color: Colors.black, fontSize: 35, fontWeight: FontWeight.w900),),
+             trailing: GestureDetector(
+               onTap: (){
+                 Navigator.pushNamed(context, BookListPages.routeName);
+               },
+               child: TextButton(
+                 child: Text('View All>',style:
+                   TextStyle(fontSize: 30, color: Colors.redAccent),),
+                 onPressed: (){
+                   Navigator.pushReplacementNamed(context, BookListPages.routeName);
+                 },
+               ),
+             ),
+             tileColor: Colors.white10,
+           ),
+         ),
 
             Expanded(
+
                child: Padding(
                  padding: const EdgeInsets.all(10.0),
                  child: ListView(
                    children: [
-                     ListTile(
-                       title: const Text('Book Name'),
-                       leading: Image.asset('images/download.jpg'),
-                       subtitle: const Text('Author Name'),
+                     InkWell(
+                       child: ListTile(
+                         title: const Text('Book Name'),
+                         leading: Image.asset('images/download.jpg'),
+                         subtitle: const Text('Author Name'),
+
+                       ),onTap: (){
+                      Navigator.pushReplacementNamed(context, BookDetailsPage.routeName);
+                     },
                      ),
                      SizedBox(
                        height: 10.h,

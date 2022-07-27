@@ -25,9 +25,12 @@ class _UserDashBoardState extends State<UserDashBoard> {
         title: const Text('Dashboard'),
         actions: [
           IconButton(onPressed: () {
-            Navigator.pushReplacementNamed(context, AddBooks.routeName);
+            
+          }, icon: Icon(Icons.search)),
+          IconButton(onPressed: () {
+            Navigator.pushNamed(context, AddBooks.routeName);
           }, icon: Icon(Icons.add)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+
         ],
       ),
       body:Container(
@@ -40,103 +43,107 @@ class _UserDashBoardState extends State<UserDashBoard> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    InkWell(
-                      child: Container(
-                        height: 100.h,
-                        width: 100.w,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: Colors.lightBlueAccent,
-                        ),
+                    Expanded(
+                      child: InkWell(
+                        child: Container(
 
-                        child: Center(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [Icon(Icons.groups,size: 55,),
-                              Text('Total Students',
-                                style: TextStyle(fontSize: 20),)],
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: Colors.lightBlueAccent,
+                          ),
+
+                          child: Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [Icon(Icons.groups,size: 55,),
+                                Text('Total Students',
+                                  style: TextStyle(fontSize: 15),)],
+                            ),
                           ),
                         ),
+                        onTap: () {
+                          Navigator.pushReplacementNamed(
+                              context, LoginScreen.routeName);
+                        },
                       ),
-                      onTap: () {
-                        Navigator.pushReplacementNamed(
-                            context, LoginScreen.routeName);
-                      },
                     ),
                     SizedBox(
                       width: 10.w,
                     ),
-                    InkWell(
-                      child: Container(
-                        height: 100.h,
-                        width: 100.w,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: Colors.lightBlueAccent,
-                        ),
+                    Expanded(
+                      child: InkWell(
+                        child: Container(
 
-                        child: Center(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [Icon(Icons.menu_book_sharp,size: 55,),
-                              Text('Total Books',
-                              style: TextStyle(fontSize: 20),)],
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: Colors.lightBlueAccent,
+                          ),
+
+                          child: Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [Icon(Icons.menu_book_sharp,size: 55,),
+                                Text('Total Books',
+                                style: TextStyle(fontSize: 15),)],
+                            ),
                           ),
                         ),
+                        onTap: () {
+                          Navigator.pushReplacementNamed(
+                              context, LoginScreen.routeName);
+                        },
                       ),
-                      onTap: () {
-                        Navigator.pushReplacementNamed(
-                            context, LoginScreen.routeName);
-                      },
                     ),
                     SizedBox(
                       width: 10.w,
                     ),
-                    InkWell(
-                      child: Container(
-                        height: 100.h,
-                        width: 100.w,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: Colors.lightBlueAccent,
-                        ),
+                    Expanded(
+                      child: InkWell(
+                        child: Container(
 
-                        child: Center(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [Icon(Icons.menu_book_sharp,size: 55,), Text('Members')],
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: Colors.lightBlueAccent,
+                          ),
+
+                          child: Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [Icon(Icons.menu_book_sharp,size: 55,), Text('Members')],
+                            ),
                           ),
                         ),
+                        onTap: () {
+                          Navigator.pushReplacementNamed(
+                              context, LoginScreen.routeName);
+                        },
                       ),
-                      onTap: () {
-                        Navigator.pushReplacementNamed(
-                            context, LoginScreen.routeName);
-                      },
                     ),
                     SizedBox(
                       width: 10.w,
                     ),
-                    InkWell(
-                      child: Container(
-                        height: 80.h,
-                        width: 80.w,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: Colors.lightBlueAccent,
-                        ),
+                    Expanded(
+                      child: InkWell(
+                        child: Container(
 
-                        child: Center(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [Icon(Icons.groups,size: 55,),
-                              Text('Members')],
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: Colors.lightBlueAccent,
+                          ),
+
+                          child: Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [Icon(Icons.groups,size: 55,),
+                                Text('Members')],
+                            ),
                           ),
                         ),
+                        onTap: () {
+                          Navigator.pushReplacementNamed(
+                              context, HomePage.routeName);
+                        },
                       ),
-                      onTap: () {
-                        Navigator.pushReplacementNamed(
-                            context, HomePage.routeName);
-                      },
                     ),
                   ],
                 ),
@@ -160,10 +167,13 @@ class _UserDashBoardState extends State<UserDashBoard> {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Image.asset('images/dm.jpeg',
-                                  height: 160,
-                                  width: 150,
-                                  fit: BoxFit.cover)
+                              Container(
+                                height: 160,
+                                width: 200,
+                                child: Image.asset('images/dm.jpeg',
+
+                                    fit: BoxFit.fill),
+                              )
                             ],
                           ),
                         ),

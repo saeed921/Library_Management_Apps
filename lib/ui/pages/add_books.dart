@@ -5,6 +5,9 @@ import 'package:image_picker/image_picker.dart';
 
 import 'package:intl/intl.dart';
 import 'package:library_management/models/books_name_model.dart';
+import 'package:library_management/ui/pages/user_dashboard.dart';
+
+import '../../db/db_helper.dart';
 
 class AddBooks extends StatefulWidget {
   static const String routeName = '/addbooks';
@@ -16,10 +19,13 @@ class AddBooks extends StatefulWidget {
 
 class _AddBooksState extends State<AddBooks> {
 
-  TextEditingController IdController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
-  TextEditingController authorController = TextEditingController();
-  TextEditingController categoryController = TextEditingController();
+  final idController = TextEditingController();
+  final bookNameController = TextEditingController();
+  final authNameController = TextEditingController();
+  final categoryNameController= TextEditingController();
+
+
+  final fromkey = GlobalKey<FormState>();
   String? category;
   String? author;
   final formKey = GlobalKey<FormState>();
@@ -29,13 +35,27 @@ class _AddBooksState extends State<AddBooks> {
   ImageSource _imageSource = ImageSource.camera;
 
   //ImageSource _imageSource =ImageSource.camera;
+  void _saveContactInfo() async{
+    if (fromkey.currentState!.validate()) {
+      final book = BookModel(
 
+          name: bookNameController.text,
+          auth: authNameController.text
+      );
+      print(book.toString());
+      final rowId = await DBHelper.insertBook(book);
+      if (rowId > 0) {
+        book.id = rowId as int;
+        Navigator.pushReplacementNamed(context, UserDashBoard.routeName);
+      }
+    }
+  }
   @override
   void dispose() {
-    IdController.dispose();
-    nameController.dispose();
-    authorController.dispose();
-    categoryController.dispose();
+bookNameController.dispose();
+    authNameController.dispose();
+    idController.dispose();
+
     // TODO: implement dispose
     super.dispose();
   }
@@ -53,27 +73,34 @@ class _AddBooksState extends State<AddBooks> {
       ),
       body: Center(
         child: Container(
-          color: Colors.blueGrey,
+          color: Colors.white,
           child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Form(
-                key: formKey,
+                key: fromkey,
                 child: ListView(
                   children: [
-                    Card(
-                      elevation: 10,
-                      child: _imagePath == null
-                          ? Image.asset(
-                        'images/personholder.png',
-                        width: 100,
-                        height: 100,
-                        fit: BoxFit.cover,
-                      )
-                          : Image.file(
-                        File(_imagePath!),
-                        width: 100,
-                        height: 100,
-                        fit: BoxFit.cover,
+                    Center(
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(150)),
+                        elevation: 10,
+                        child: _imagePath == null
+                            ? ClipRRect(
+                          borderRadius: BorderRadius.circular(150),
+                              child: Image.asset(
+                          'images/personholder.png',
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        ),
+                            )
+                            : Image.file(
+                          File(_imagePath!),
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     Row(
@@ -98,18 +125,18 @@ class _AddBooksState extends State<AddBooks> {
                       ],
                     ),
                     TextFormField(
-                      controller: nameController,
+                      controller: bookNameController,
                       decoration: InputDecoration(
                           labelText: 'Enter Books Name',
 
-                          prefixIcon: Icon(Icons.person,
+                          prefixIcon: Icon(Icons.menu_book_sharp,
                             size: 35,)
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'This field must not be empty';
                         }
-                        if (value.length > 5) {
+                        if (value.length > 20) {
                           return 'Name must be in 5 carecter';
                         }
                         else {
@@ -117,25 +144,23 @@ class _AddBooksState extends State<AddBooks> {
                         }
                       },
                     ),
+                    TextFormField(
+                      controller: authNameController,
+                      decoration: InputDecoration(labelText: 'Enter Book Author Name',
+                      prefixIcon: Icon(Icons.perm_contact_cal_rounded, size: 35,)),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'This field must not be empty';
+                        }
+                      },
+                    ),
                     SizedBox(
 
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: TextField(
-                          controller: IdController,
-                          decoration: InputDecoration(
-
-                              labelText: 'Enter Books Id',
-
-                              prefixIcon: Icon(Icons.password,
-                                size: 35,)
-                          )),
-                    ),
-                    DropdownButton<String>(
+                    ), DropdownButton<String>(
                       isExpanded: true,
                       value: category,
-                      hint: const Text('Select Category'),
+                      dropdownColor: Colors.lightBlueAccent,
+                      hint: const Text('Select Category',),
                       items: CategoryList.map((e) =>
                           DropdownMenuItem(
                               value: e,
@@ -150,26 +175,15 @@ class _AddBooksState extends State<AddBooks> {
                         });
                       },
                     ),
-                    DropdownButton<String>(
-                      isExpanded: true,
-                      value: author,
-                      hint: const Text('Select Author Name'),
-                      items: AuthorList.map((e) =>
-                          DropdownMenuItem(
-                              value: e,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(e),
-                              )),
-                      ).toList(),
-                      onChanged: (value) {
-                        setState(() {
-                          author = value;
-                        });
-                      },
-                    ),
+SizedBox(
+  height: 10,
+),
 
                     Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(26),
+
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -178,6 +192,7 @@ class _AddBooksState extends State<AddBooks> {
                           Text(_dob == null ? 'No Date Selected' : _dob!)
                         ],
                       ),
+                      color: Colors.lightBlueAccent,
                     ),
                   ],
                 ),
@@ -211,7 +226,6 @@ class _AddBooksState extends State<AddBooks> {
     }
   }}
 
-  void _saveContactInfo() async {
 
-  }
+
 

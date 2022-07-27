@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:library_management/ui/pages/add_books.dart';
+import 'package:library_management/ui/pages/book_details_page.dart';
+import 'package:library_management/ui/pages/booka_list_pages.dart';
 import 'package:library_management/ui/pages/home_page.dart';
 import 'package:library_management/ui/pages/launcher_page.dart';
 import 'package:library_management/ui/pages/login_page.dart';
@@ -33,6 +35,11 @@ class MyApp extends StatelessWidget {
               LauncherPage.routeName : (context) => LauncherPage(),
               UserDashBoard.routeName : (context) => UserDashBoard(),
               AddBooks.routeName : (context) => AddBooks(),
+              BookDetailsPage.routeName:(context)=>BookDetailsPage(),
+              BookListPages.routeName:(context)=> BookListPages(),
+
+
+
             },
           );
     });
